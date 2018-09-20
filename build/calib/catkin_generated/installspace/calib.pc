@@ -1,0 +1,8 @@
+prefix=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/install
+
+Name: calib
+Description: Description of calib
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/install/lib 
+Requires: 

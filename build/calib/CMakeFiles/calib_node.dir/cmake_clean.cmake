@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/calib_node.dir/src/cam_draw.cpp.o"
+  "CMakeFiles/calib_node.dir/src/read_param.cpp.o"
   "/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node.pdb"
   "/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node"
 )

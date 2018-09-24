@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"calib\"
 
-CXX_INCLUDES = -I/opt/ros/indigo/include -I/usr/include/opencv 
+CXX_INCLUDES = -I/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/include -I/opt/ros/indigo/include -I/usr/include/opencv 
 

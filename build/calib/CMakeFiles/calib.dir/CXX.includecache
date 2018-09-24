@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/include/calib/read_param.h
+opencv2/calib3d/calib3d.hpp
+-
+opencv2/core/core.hpp
+-
+string
+-
+
+/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/read_param.cpp
+calib/read_param.h
+-
+iostream
+-
+

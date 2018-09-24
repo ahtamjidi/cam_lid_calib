@@ -102,6 +102,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -123,17 +134,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -226,6 +226,21 @@ rosgraph_msgs_generate_messages_lisp: calib/CMakeFiles/rosgraph_msgs_generate_me
 rosgraph_msgs_generate_messages_lisp/fast:
 	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make calib/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+calib/CMakeFiles/calib_node4.dir/rule:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f CMakeFiles/Makefile2 calib/CMakeFiles/calib_node4.dir/rule
+.PHONY : calib/CMakeFiles/calib_node4.dir/rule
+
+# Convenience name for target.
+calib_node4: calib/CMakeFiles/calib_node4.dir/rule
+
+.PHONY : calib_node4
+
+# fast build rule for target.
+calib_node4/fast:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/build
+.PHONY : calib_node4/fast
 
 # Convenience name for target.
 calib/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/rule:
@@ -536,6 +551,33 @@ src/lidar_camera_calib.cpp.s:
 	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node3.dir/build.make calib/CMakeFiles/calib_node3.dir/src/lidar_camera_calib.cpp.s
 .PHONY : src/lidar_camera_calib.cpp.s
 
+src/lidar_to_image.o: src/lidar_to_image.cpp.o
+
+.PHONY : src/lidar_to_image.o
+
+# target to build an object file
+src/lidar_to_image.cpp.o:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o
+.PHONY : src/lidar_to_image.cpp.o
+
+src/lidar_to_image.i: src/lidar_to_image.cpp.i
+
+.PHONY : src/lidar_to_image.i
+
+# target to preprocess a source file
+src/lidar_to_image.cpp.i:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.i
+.PHONY : src/lidar_to_image.cpp.i
+
+src/lidar_to_image.s: src/lidar_to_image.cpp.s
+
+.PHONY : src/lidar_to_image.s
+
+# target to generate assembly for a file
+src/lidar_to_image.cpp.s:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.s
+.PHONY : src/lidar_to_image.cpp.s
+
 src/pcl_stuff.o: src/pcl_stuff.cpp.o
 
 .PHONY : src/pcl_stuff.o
@@ -600,10 +642,12 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... test"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... calib_node4"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_cpp"
@@ -623,13 +667,15 @@ help:
 	@echo "... calib_node3"
 	@echo "... edit_cache"
 	@echo "... calib_node2"
-	@echo "... test"
 	@echo "... src/cam_draw.o"
 	@echo "... src/cam_draw.i"
 	@echo "... src/cam_draw.s"
 	@echo "... src/lidar_camera_calib.o"
 	@echo "... src/lidar_camera_calib.i"
 	@echo "... src/lidar_camera_calib.s"
+	@echo "... src/lidar_to_image.o"
+	@echo "... src/lidar_to_image.i"
+	@echo "... src/lidar_to_image.s"
 	@echo "... src/pcl_stuff.o"
 	@echo "... src/pcl_stuff.i"
 	@echo "... src/pcl_stuff.s"

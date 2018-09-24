@@ -190,6 +190,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "calib/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "calib/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake"
   "calib/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake"
+  "calib/CMakeFiles/calib_node4.dir/DependInfo.cmake"
   "calib/CMakeFiles/pcl_msgs_generate_messages_cpp.dir/DependInfo.cmake"
   "calib/CMakeFiles/roscpp_generate_messages_py.dir/DependInfo.cmake"
   "calib/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/DependInfo.cmake"

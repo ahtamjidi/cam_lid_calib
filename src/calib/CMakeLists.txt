@@ -150,7 +150,7 @@ include_directories(
 add_executable(${PROJECT_NAME}_node1 src/cam_draw.cpp src/read_param.cpp)
 add_executable(${PROJECT_NAME}_node2 src/pcl_stuff.cpp )
 add_executable(${PROJECT_NAME}_node3 src/lidar_camera_calib.cpp )
-
+add_executable(${PROJECT_NAME}_node4 src/lidar_to_image.cpp )
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -163,6 +163,7 @@ add_executable(${PROJECT_NAME}_node3 src/lidar_camera_calib.cpp )
 add_dependencies(${PROJECT_NAME}_node1 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(${PROJECT_NAME}_node2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(${PROJECT_NAME}_node3 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_node4 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node1
@@ -174,6 +175,10 @@ target_link_libraries(${PROJECT_NAME}_node1
   )
 
   target_link_libraries(${PROJECT_NAME}_node3
+  ${catkin_LIBRARIES}
+  )
+
+  target_link_libraries(${PROJECT_NAME}_node4
   ${catkin_LIBRARIES}
   )
 

@@ -285,6 +285,19 @@ rosgraph_msgs_generate_messages_lisp/fast:
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named calib_node4
+
+# Build rule for target.
+calib_node4: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calib_node4
+.PHONY : calib_node4
+
+# fast build rule for target.
+calib_node4/fast:
+	$(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/build
+.PHONY : calib_node4/fast
+
+#=============================================================================
 # Target rules for targets named pcl_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -527,6 +540,7 @@ help:
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... calib_node4"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... geometry_msgs_generate_messages_cpp"

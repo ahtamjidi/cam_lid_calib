@@ -4,6 +4,15 @@
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/lidar_to_image.cpp
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/camera_publisher.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/camera_subscriber.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/exception.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/image_transport.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/loader_fwds.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/publisher.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/single_subscriber_publisher.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/subscriber.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/transport_hints.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/pcl_conversions/pcl_conversions.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/pcl_msgs/ModelCoefficients.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/pcl_msgs/PointIndices.h
@@ -63,9 +72,11 @@ calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/inclu
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/ros/wall_timer.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/ros/wall_timer_options.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/rosconsole/macros_generated.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/sensor_msgs/CameraInfo.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/sensor_msgs/Image.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/sensor_msgs/PointCloud2.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/sensor_msgs/PointField.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/sensor_msgs/RegionOfInterest.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/std_msgs/Header.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /usr/include/eigen3/Eigen/Cholesky
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /usr/include/eigen3/Eigen/Core

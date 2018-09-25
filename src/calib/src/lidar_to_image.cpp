@@ -11,7 +11,6 @@
 // import struct
 // import numpy as np
 
-
 // camera ={}
 // imageOverlay = {}
 // cameraInfo = CameraInfo()
@@ -20,7 +19,6 @@
 // tf_ = tf.TransformListener()
 
 // velodyneData = []
-
 
 // def camera_callback(data):
 // 	global cameraModel, camera
@@ -55,7 +53,6 @@
 // 	# print(len( points ))
 // 	velodyneData = points
 
-
 // def image_callback(data):
 // 	global velodyneData, bridge, tf_
 // 	print('In input image callback - received rectified image')
@@ -68,7 +65,7 @@
 // 			print('Failed to convert image', e)
 // 			return
 
-// 	# the transform is same for every frame 
+// 	# the transform is same for every frame
 // 	(trans, rot) = tf_.lookupTransform( 'world', 'velodyne', rospy.Time( 0 ) )
 
 // 	# print("transformation: ", trans, rot)
@@ -95,7 +92,7 @@
 // 				print("Index Error!!!!!")
 // 				break
 
-// 			#  project 3D point to 2D uv 
+// 			#  project 3D point to 2D uv
 // 			rotatedPoint = rotationMatrix.dot( point )
 // 			uv = cameraModel.project3dToPixel( rotatedPoint )
 
@@ -110,18 +107,17 @@
 // 		print( 'Failed to convert image', e )
 // 		return
 
-
 // if __name__ == '__main__':
 // 	try:
 
 // 		# Initialize the node and name it.
 // 		rospy.init_node('lidar_overlay_image')
 
-// 		# look up camera name, after remapping 
+// 		# look up camera name, after remapping
 // 		cameraName = rospy.resolve_name( 'camera' )
 // 		print('Waiting for camera_info from ' + cameraName)
 
-// 		# look up image_rect_color 
+// 		# look up image_rect_color
 // 		imageRectName = rospy.resolve_name( 'image' )
 // 		print('Waiting for input image from ' + imageRectName)
 
@@ -150,73 +146,85 @@
 #include <string>
 #include <sensor_msgs/PointCloud2.h>
 #include <pcl_conversions/pcl_conversions.h>
-
+#include <image_transport/image_transport.h>
+#include <boost/foreach.hpp>
 
 class CloudImageOverlay
 {
-public:
-  void
-  cloud_cb (const sensor_msgs::PointCloud2ConstPtr& cloud)
-  {
-    if ((cloud->width * cloud->height) == 0)
-      return; //return if the cloud is not dense!
-    try
+  public:
+    void
+    cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud)
     {
-      pcl::toROSMsg (*cloud, image_); //convert the cloud
+        if ((cloud->width * cloud->height) == 0)
+            return; //return if the cloud is not dense!
+        try
+        {
+            pcl::toROSMsg(*cloud, image_); //convert the cloud
+        }
+        catch (std::runtime_error e)
+        {
+            ROS_ERROR_STREAM("Error in converting cloud to image message: "
+                             << e.what());
+        }
+        image_pub_.publish(image_); //publish our cloud image
     }
-    catch (std::runtime_error e)
+
+    void
+    image_cb(const sensor_msgs::PointCloud2ConstPtr &cloud)
     {
-      ROS_ERROR_STREAM("Error in converting cloud to image message: "
-                        << e.what());
+        if ((cloud->width * cloud->height) == 0)
+            return; //return if the cloud is not dense!
+        try
+        {
+            pcl::toROSMsg(*cloud, image_); //convert the cloud
+        }
+        catch (std::runtime_error e)
+        {
+            ROS_ERROR_STREAM("Error in converting cloud to image message: "
+                             << e.what());
+        }
+        image_pub_.publish(image_); //publish our cloud image
     }
-    image_pub_.publish (image_); //publish our cloud image
-  }
-  void
-  image_cb (const sensor_msgs::PointCloud2ConstPtr& cloud)
-  {
-    if ((cloud->width * cloud->height) == 0)
-      return; //return if the cloud is not dense!
-    try
+
+    CloudImageOverlay() : cloud_topic_("input"),
+                          image_in_topic_("image_in"),
+                          image_out_topic_("image_out"),
+                          camera_info_topic_("camera_info")
     {
-      pcl::toROSMsg (*cloud, image_); //convert the cloud
+        sub_cloud = nh_.subscribe(cloud_topic_, 30, &CloudImageOverlay::cloud_cb, this);
+        sub_cam_info = nh_.subscribe(image_in_topic_, 30, &CloudImageOverlay::image_cb, this);
+        sub_cam_image = nh_.subscribe(camera_info_topic_, 30, &CloudImageOverlay::cloud_cb, this);
+
+        image_pub_ = nh_.advertise<sensor_msgs::Image>(image_out_topic_, 30);
+
+        //print some info about the node
+        std::string r_ct = nh_.resolveName(cloud_topic_);
+        std::string r_it = nh_.resolveName(image_in_topic_);
+        std::string r_cit = nh_.resolveName(camera_info_topic_);
+
+        ROS_INFO_STREAM("Listening for incoming data on topic " << r_ct);
+        ROS_INFO_STREAM("Publishing image on topic " << r_it);
     }
-    catch (std::runtime_error e)
-    {
-      ROS_ERROR_STREAM("Error in converting cloud to image message: "
-                        << e.what());
-    }
-    image_pub_.publish (image_); //publish our cloud image
-  }
+
+  private:
+    ros::NodeHandle nh_;
+    sensor_msgs::Image image_;     //cache the image message
+    std::string cloud_topic_;      
+    std::string image_in_topic_;    
+    std::string image_out_topic_;     
+    std::string camera_info_topic_;    
 
 
-  CloudImageOverlay () : cloud_topic_("input"),image_topic_("output")
-  {
-    sub_ = nh_.subscribe (cloud_topic_, 30,
-                          &CloudImageOverlay::cloud_cb, this);
-    image_pub_ = nh_.advertise<sensor_msgs::Image> (image_topic_, 30);
-
-    //print some info about the node
-    std::string r_ct = nh_.resolveName (cloud_topic_);
-    std::string r_it = nh_.resolveName (image_topic_);
-    ROS_INFO_STREAM("Listening for incoming data on topic " << r_ct );
-    ROS_INFO_STREAM("Publishing image on topic " << r_it );
-  }
-private:
-  ros::NodeHandle nh_;
-  sensor_msgs::Image image_; //cache the image message
-  std::string cloud_topic_; //default input
-  std::string image_topic_; //default output
-  ros::Subscriber sub_; //cloud subscriber
-  ros::Subscriber sub_cam; //cam subscriber
-
-  ros::Publisher image_pub_; //image message publisher
+    ros::Subscriber sub_cloud;     //cloud subscriber
+    ros::Subscriber sub_cam_info;  //cam info subscriber
+    ros::Subscriber sub_cam_image; //cam image subscriber
+    ros::Publisher image_pub_; //image message publisher
 };
 
-int
-main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-  ros::init (argc, argv, "convert_pointcloud_to_image");
-  CloudImageOverlay pci; //this loads up the node
-  ros::spin (); //where she stops nobody knows
-  return 0;
+    ros::init(argc, argv, "convert_pointcloud_to_image");
+    CloudImageOverlay pci; //this loads up the node
+    ros::spin();           //where she stops nobody knows
+    return 0;
 }

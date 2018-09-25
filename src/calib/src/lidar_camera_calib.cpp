@@ -41,6 +41,23 @@ int main(int argc, char **argv)
     // 3D model points.
     std::vector<cv::Point3d> model_points;
 
+
+    // frame0034.jpg
+    // lu = [1.4020, -0.597752, -0.133348] uv = [597, 323]
+    // ru = [4.9928, -1.7213, -1.0266]  uv = [809, 345]
+    // rb = [1.3947, -1.1233, -0.47985]  uv = [788, 472]
+    // lb = [1.492, -0.58211, -0.42912]  uv = [577, 454]
+
+    // frame0000.jpg
+    // lu = [1.2935, -0.16672, 0.068351] uv = [272, 284]
+    // ru = [1.3064, -0.37849, 0.071282]  uv = [515, 292]
+    // lb = [1.3755, 0.17589, -0.21963]  uv = [263, 432]
+
+    // frame0002.jpg
+    // lu = [1.3547, 0.14028, 0.36493] uv = [290, 59]
+    // lb = [1.49293, 0.15089, 0.17647]  uv = [278, 194]
+    // ru = [1.2479, -0.39149, 0.35044]  uv = [513, 50]
+
     // frame0034.jpg
     model_points.push_back(cv::Point3d( 0.597752, 0.133348, 1.4020)); // uv = [597, 323]
     model_points.push_back(cv::Point3d(1.1233, 0.47985, 1.3947)); // uv = [788, 472]
@@ -83,7 +100,7 @@ int main(int argc, char **argv)
     cv::Mat translation_vector;
      
     // Solve for pose
-    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector, false, ITERATIVE);
+    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector, false, CV_ITERATIVE);
  
     vector<Point2d> projected_lidar_point2D;
      

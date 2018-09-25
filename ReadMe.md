@@ -83,8 +83,10 @@ x_c = -y_l
 y_c = -z_l
 z_c = x_l
 ```
+running the pnp algorithm results in 
 ```
-Camera Matrix 
+rosrun calib calib_lid2cam
+Camera Matrix
 [483.761692, 0, 456.184555;
   0, 483.550078, 365.883083;
   0, 0, 1]

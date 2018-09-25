@@ -148,10 +148,8 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/calib_node.cpp)
-add_executable(${PROJECT_NAME}_node1 src/cam_draw.cpp src/read_param.cpp)
-add_executable(${PROJECT_NAME}_node2 src/pcl_stuff.cpp )
-add_executable(${PROJECT_NAME}_node3 src/lidar_camera_calib.cpp )
-add_executable(${PROJECT_NAME}_node4 src/lidar_to_image.cpp src/project_pcl_to_image.cpp)
+add_executable(${PROJECT_NAME}_lid2cam src/lidar_camera_calib.cpp )
+add_executable(${PROJECT_NAME}_lidonimage src/lidar_to_image.cpp src/project_pcl_to_image.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -161,25 +159,16 @@ add_executable(${PROJECT_NAME}_node4 src/lidar_to_image.cpp src/project_pcl_to_i
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(${PROJECT_NAME}_node1 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_node2 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_node3 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_node4 ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_lid2cam ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_lidonimage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_node1
+
+  target_link_libraries(${PROJECT_NAME}_lid2cam
   ${catkin_LIBRARIES}
   )
 
-  target_link_libraries(${PROJECT_NAME}_node2
-  ${catkin_LIBRARIES}
-  )
-
-  target_link_libraries(${PROJECT_NAME}_node3
-  ${catkin_LIBRARIES}
-  )
-
-  target_link_libraries(${PROJECT_NAME}_node4
+  target_link_libraries(${PROJECT_NAME}_lidonimage
   ${catkin_LIBRARIES}
   )
 

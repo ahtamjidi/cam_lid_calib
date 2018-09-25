@@ -8,3 +8,4 @@
 
 # modified environment variables
 export PWD="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build"
+export PYTHONPATH="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/python2.7/dist-packages:$PYTHONPATH"

@@ -259,6 +259,32 @@ sensor_msgs_generate_messages_cpp/fast:
 .PHONY : sensor_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named calib_lidonimage
+
+# Build rule for target.
+calib_lidonimage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calib_lidonimage
+.PHONY : calib_lidonimage
+
+# fast build rule for target.
+calib_lidonimage/fast:
+	$(MAKE) -f calib/CMakeFiles/calib_lidonimage.dir/build.make calib/CMakeFiles/calib_lidonimage.dir/build
+.PHONY : calib_lidonimage/fast
+
+#=============================================================================
+# Target rules for targets named calib_lid2cam
+
+# Build rule for target.
+calib_lid2cam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 calib_lid2cam
+.PHONY : calib_lid2cam
+
+# fast build rule for target.
+calib_lid2cam/fast:
+	$(MAKE) -f calib/CMakeFiles/calib_lid2cam.dir/build.make calib/CMakeFiles/calib_lid2cam.dir/build
+.PHONY : calib_lid2cam/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_py
 
 # Build rule for target.
@@ -285,19 +311,6 @@ rosgraph_msgs_generate_messages_lisp/fast:
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named calib_node4
-
-# Build rule for target.
-calib_node4: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calib_node4
-.PHONY : calib_node4
-
-# fast build rule for target.
-calib_node4/fast:
-	$(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/build
-.PHONY : calib_node4/fast
-
-#=============================================================================
 # Target rules for targets named pcl_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -322,6 +335,19 @@ roscpp_generate_messages_py: cmake_check_build_system
 roscpp_generate_messages_py/fast:
 	$(MAKE) -f calib/CMakeFiles/roscpp_generate_messages_py.dir/build.make calib/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_cpp
+
+# Build rule for target.
+roscpp_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	$(MAKE) -f calib/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make calib/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_cpp
@@ -361,32 +387,6 @@ sensor_msgs_generate_messages_lisp: cmake_check_build_system
 sensor_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f calib/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make calib/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 .PHONY : sensor_msgs_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named roscpp_generate_messages_cpp
-
-# Build rule for target.
-roscpp_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	$(MAKE) -f calib/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make calib/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named calib_node1
-
-# Build rule for target.
-calib_node1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calib_node1
-.PHONY : calib_node1
-
-# fast build rule for target.
-calib_node1/fast:
-	$(MAKE) -f calib/CMakeFiles/calib_node1.dir/build.make calib/CMakeFiles/calib_node1.dir/build
-.PHONY : calib_node1/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_lisp
@@ -492,32 +492,6 @@ pcl_msgs_generate_messages_py/fast:
 	$(MAKE) -f calib/CMakeFiles/pcl_msgs_generate_messages_py.dir/build.make calib/CMakeFiles/pcl_msgs_generate_messages_py.dir/build
 .PHONY : pcl_msgs_generate_messages_py/fast
 
-#=============================================================================
-# Target rules for targets named calib_node3
-
-# Build rule for target.
-calib_node3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calib_node3
-.PHONY : calib_node3
-
-# fast build rule for target.
-calib_node3/fast:
-	$(MAKE) -f calib/CMakeFiles/calib_node3.dir/build.make calib/CMakeFiles/calib_node3.dir/build
-.PHONY : calib_node3/fast
-
-#=============================================================================
-# Target rules for targets named calib_node2
-
-# Build rule for target.
-calib_node2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calib_node2
-.PHONY : calib_node2
-
-# fast build rule for target.
-calib_node2/fast:
-	$(MAKE) -f calib/CMakeFiles/calib_node2.dir/build.make calib/CMakeFiles/calib_node2.dir/build
-.PHONY : calib_node2/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -538,16 +512,16 @@ help:
 	@echo "... install"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... calib_lidonimage"
+	@echo "... calib_lid2cam"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... calib_node4"
 	@echo "... pcl_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_py"
+	@echo "... roscpp_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... calib_node1"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
@@ -556,8 +530,6 @@ help:
 	@echo "... pcl_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... pcl_msgs_generate_messages_py"
-	@echo "... calib_node3"
-	@echo "... calib_node2"
 .PHONY : help
 
 

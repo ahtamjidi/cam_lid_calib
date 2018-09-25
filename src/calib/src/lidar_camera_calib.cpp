@@ -9,7 +9,9 @@ int main(int argc, char **argv)
 {
 
     // Read input image
-    cv::Mat im = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/data/laser_camera_ass/frame0034.jpg");
+    cv::Mat im1 = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/data/laser_camera_ass/frame0034.jpg");
+    cv::Mat im2 = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/data/laser_camera_ass/frame0000.jpg");
+    cv::Mat im3 = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/data/laser_camera_ass/frame0002.jpg");
      
     // 2D image points. If you change the image, you need to change vector
     std::vector<cv::Point2d> image_points;
@@ -30,6 +32,13 @@ int main(int argc, char **argv)
     image_points.push_back( cv::Point2d(278, 194) );   
     image_points.push_back( cv::Point2d(513, 50) );    
 
+    // // frame0004.jpg
+    image_points.push_back( cv::Point2d(323, 183) );  
+    image_points.push_back( cv::Point2d(648, 184) );  
+
+    // // frame0005.jpg
+    image_points.push_back( cv::Point2d(269, 113) );  
+
     // 3D model points.
     std::vector<cv::Point3d> model_points;
 
@@ -48,10 +57,13 @@ int main(int argc, char **argv)
     model_points.push_back(cv::Point3d(1.3547, 0.14028, 0.36493)); // uv = [290, 59]
     model_points.push_back(cv::Point3d(1.49293, 0.15089, 0.17647));  // uv = [278, 194]
     model_points.push_back(cv::Point3d(1.2479, -0.39149, 0.35044));  // uv = [513, 50]    
-     
-    // Camera internals
-    double focal_length = im.cols; // Approximate focal length.
-    Point2d center = cv::Point2d(im.cols/2,im.rows/2);
+
+    // // frame0004.jpg
+    model_points.push_back(cv::Point3d(1.0917, 0.67974, 0.1343)); //  uv = [323, 183]
+    model_points.push_back(cv::Point3d(1.0902, -0.51324, 0.14795)); // uv = [648, 184]
+
+    // frame0005.jpg
+    model_points.push_back(cv::Point3d(1.3114, 0.1604, 0.30503)); //  uv = [269, 113]
 
     // distortion_coefficients:
     // rows: 1
@@ -73,7 +85,7 @@ int main(int argc, char **argv)
     cv::Mat translation_vector;
      
     // Solve for pose
-    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector);
+    cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector, false, EPNP);
  
     vector<Point2d> projected_lidar_point2D;
      
@@ -82,11 +94,21 @@ int main(int argc, char **argv)
      
     for(int i=0; i < 4; i++)
     {
-        circle(im, image_points[i], 3, Scalar(0,0,255), -1);
-        circle(im, projected_lidar_point2D[i], 3, Scalar(0,255,255), -1);
+        circle(im1, image_points[i], 3, Scalar(0,0,255), -1);
+        circle(im1, projected_lidar_point2D[i], 3, Scalar(0,255,255), -1);
     }
 
+    for(int i=4; i < 7; i++)
+    {
+        circle(im2, image_points[i], 3, Scalar(0,0,255), -1);
+        circle(im2, projected_lidar_point2D[i], 3, Scalar(0,255,255), -1);
+    }
 
+    for(int i=7; i < 10; i++)
+    {
+        circle(im3, image_points[i], 3, Scalar(0,0,255), -1);
+        circle(im3, projected_lidar_point2D[i], 3, Scalar(0,255,255), -1);
+    }
     cout << "Rotation Vector " << endl << rotation_vector << endl;
     cout << "Translation Vector" << endl << translation_vector << endl;
      
@@ -100,7 +122,11 @@ int main(int argc, char **argv)
     // [0.5502380796317662; -0.09583337938532677; -1.952046156849584]
      
     // Display image.
-    cv::imshow("Output", im);
+    cv::imshow("frame0034", im1);
+    cv::imshow("frame0000", im2);
+    cv::imshow("frame0002", im3);
+
+
     cv::waitKey(0);
  
 }

@@ -7,9 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src:$ROS_PACKAGE_PATH"

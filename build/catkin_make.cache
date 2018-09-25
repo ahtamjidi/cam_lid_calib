@@ -1,2 +1,2 @@
 calib
--DCMAKE_BUILD_TYPE=Debug -DCATKIN_DEVEL_PREFIX=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel -DCMAKE_INSTALL_PREFIX=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel -DCMAKE_INSTALL_PREFIX=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/install -G Unix Makefiles

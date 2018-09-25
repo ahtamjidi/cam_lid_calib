@@ -191,14 +191,22 @@ class CloudImageOverlay
         image_pub_.publish(image_); //publish our cloud image
     }
 
+    void
+    cam_info_cb(const sensor_msgs::CameraInfoConstPtr& cam_info)
+    {
+
+    }
+
     CloudImageOverlay() : cloud_topic_("input"),
                           image_in_topic_("image_in"),
                           image_out_topic_("image_out"),
                           camera_info_topic_("camera_info")
+                        //   it(nh_)
     {
         sub_cloud = nh_.subscribe(cloud_topic_, 30, &CloudImageOverlay::cloud_cb, this);
         sub_cam_info = nh_.subscribe(image_in_topic_, 30, &CloudImageOverlay::image_cb, this);
-        sub_cam_image = nh_.subscribe(camera_info_topic_, 30, &CloudImageOverlay::cloud_cb, this);
+        sub_cam_image = nh_.subscribe(camera_info_topic_, 30, &CloudImageOverlay::cam_info_cb, this);
+        // sub = it.subscribe("camera/image_raw", 1, &CloudImageOverlay::cam_info_cb);
 
         image_pub_ = nh_.advertise<sensor_msgs::Image>(image_out_topic_, 30);
 
@@ -220,9 +228,10 @@ class CloudImageOverlay
     std::string cloud_topic_;      
     std::string image_in_topic_;    
     std::string image_out_topic_;     
-    std::string camera_info_topic_;    
+    std::string camera_info_topic_;   
+    // image_transport::ImageTransport it;
     image_geometry::PinholeCameraModel cam_model_;
-
+    // image_transport::Subscriber sub;
 
     ros::Subscriber sub_cloud;     //cloud subscriber
     ros::Subscriber sub_cam_info;  //cam info subscriber

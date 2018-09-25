@@ -194,7 +194,7 @@ class CloudImageOverlay
     void
     cam_info_cb(const sensor_msgs::CameraInfoConstPtr& cam_info)
     {
-
+         cam_model_.fromCameraInfo(cam_info);
     }
 
     CloudImageOverlay() : cloud_topic_("input"),

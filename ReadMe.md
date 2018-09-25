@@ -42,6 +42,13 @@ I use the following command to replace the camera_info of the original bag file 
 ```
 python /opt/ros/indigo/lib/python2.7/dist-packages/bag_tools/change_camera_info.py ../2016-11-22-14-32-13_test.orig.bag ../2016-11-22-14-32-13_test.newcalib.bag /sensors/camera/camera_info=./ost.yaml
 ```
+I have saved the images used for camera calibration in the `data` folder
+```
+calibration_attempt_1	added vudei and data	
+calibration_attempt_2	added vudei and data	
+```
+I used `rect2.launch` to replay and rectify the images. The resulting video is saved in 
+`rectified_image_video.avi`	.
 
 # Task 2
 

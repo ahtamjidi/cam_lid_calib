@@ -23,6 +23,12 @@ image_transport/image_transport.h
 -
 boost/foreach.hpp
 -
+image_transport/image_transport.h
+-
+opencv/cv.h
+-
+image_geometry/pinhole_camera_model.h
+-
 
 /opt/ros/indigo/include/XmlRpcDecl.h
 ros/macros.h
@@ -38,6 +44,18 @@ string
 vector
 -
 time.h
+-
+
+/opt/ros/indigo/include/image_geometry/pinhole_camera_model.h
+sensor_msgs/CameraInfo.h
+-
+opencv2/core/core.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+opencv2/calib3d/calib3d.hpp
+-
+stdexcept
 -
 
 /opt/ros/indigo/include/image_transport/camera_publisher.h

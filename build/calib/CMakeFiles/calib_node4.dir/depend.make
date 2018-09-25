@@ -4,6 +4,7 @@
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/lidar_to_image.cpp
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/XmlRpcDecl.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/XmlRpcValue.h
+calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_geometry/pinhole_camera_model.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/camera_publisher.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/camera_subscriber.h
 calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o: /opt/ros/indigo/include/image_transport/exception.h

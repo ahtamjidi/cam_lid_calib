@@ -148,6 +148,11 @@
 #include <pcl_conversions/pcl_conversions.h>
 #include <image_transport/image_transport.h>
 #include <boost/foreach.hpp>
+#include <image_transport/image_transport.h>
+#include <opencv/cv.h>
+// #include <cv_bridge/CvBridge.h>
+#include <image_geometry/pinhole_camera_model.h>
+
 
 class CloudImageOverlay
 {
@@ -203,6 +208,9 @@ class CloudImageOverlay
         std::string r_cit = nh_.resolveName(camera_info_topic_);
 
         ROS_INFO_STREAM("Listening for incoming data on topic " << r_ct);
+        ROS_INFO_STREAM("Listening for incoming data on topic " << r_it);
+        ROS_INFO_STREAM("Listening for incoming data on topic " << r_cit);
+
         ROS_INFO_STREAM("Publishing image on topic " << r_it);
     }
 
@@ -213,6 +221,7 @@ class CloudImageOverlay
     std::string image_in_topic_;    
     std::string image_out_topic_;     
     std::string camera_info_topic_;    
+    image_geometry::PinholeCameraModel cam_model_;
 
 
     ros::Subscriber sub_cloud;     //cloud subscriber

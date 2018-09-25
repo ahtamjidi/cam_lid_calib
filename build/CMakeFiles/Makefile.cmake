@@ -82,6 +82,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/ros/indigo/share/geometry_msgs/cmake/geometry_msgs-msg-extras.cmake"
   "/opt/ros/indigo/share/geometry_msgs/cmake/geometry_msgsConfig-version.cmake"
   "/opt/ros/indigo/share/geometry_msgs/cmake/geometry_msgsConfig.cmake"
+  "/opt/ros/indigo/share/image_geometry/cmake/image_geometryConfig-version.cmake"
+  "/opt/ros/indigo/share/image_geometry/cmake/image_geometryConfig.cmake"
   "/opt/ros/indigo/share/image_transport/cmake/image_transportConfig-version.cmake"
   "/opt/ros/indigo/share/image_transport/cmake/image_transportConfig.cmake"
   "/opt/ros/indigo/share/message_filters/cmake/message_filtersConfig-version.cmake"

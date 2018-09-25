@@ -71,32 +71,25 @@ lu = [1.3547, 0.14028, 0.36493] uv = [290, 59]
 lb = [1.49293, 0.15089, 0.17647]  uv = [278, 194]
 ru = [1.2479, -0.39149, 0.35044]  uv = [513, 50]
 ```
-The result is 
+Something I initially forgot was to consider the difference between the default orientation of camera and lidar
+camera
+https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+velodyne
+https://github.com/ros-drivers/velodyne/issues/113
 
+Therefore in my code I considered the following transformation before running solvePNP
+```
+x_c = -y_l
+y_c = -z_l
+z_c = x_l
+```
 ```
 Camera Matrix 
 [483.761692, 0, 456.184555;
   0, 483.550078, 365.883083;
   0, 0, 1]
-Rotation Vector 
-[2.554245369973336; 1.703527296239992; 2.40930112483438]
-Translation Vector
-[0.5502380796317662; -0.09583337938532677; -1.952046156849584]
-```
-
 Rotation Vector
-[1.679852003315062; -1.011317546957869; 0.6799887233916685]
+[0.2096623278002438; 0.3710162110018459; 0.09669619186989108]
 Translation Vector
-[-0.9009527693621783; 0.03473311189086575; 0.2200892954958416]
-
-Python Result
-```
-Rotation Vector:
- [[2.55424537]
- [1.7035273 ]
- [2.40930112]]
-Translation Vector:
- [[ 0.55023808]
- [-0.09583338]
- [-1.95204616]]
+[-0.7380530632718042; -0.02821639983304844; 0.01461670013504489]
 ```

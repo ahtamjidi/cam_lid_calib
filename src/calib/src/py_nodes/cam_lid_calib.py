@@ -2,6 +2,8 @@
  
 import cv2
 import numpy as np
+import rospy
+
 def worker():
 
     # Read Image
@@ -58,17 +60,22 @@ def worker():
                             ], dtype="double")
     
     # 3D model points.
+    ```
+    # x_c = -y_l
+    # y_c = z_l
+    # z_c = x_l
+```
     model_points = np.array([
-                                (1.4020, -0.597752, -0.133348),             # Nose tip
-                                (4.9928, -1.7213, -1.0266),        # Chin
-                                (1.3947, -1.1233, -0.47985),     # Left eye left corner
-                                (1.492, -0.58211, -0.42912),      # Right eye right corne
-                                (1.2935, -0.16672, 0.068351),    # Left Mouth corner
-                                (1.3064, -0.37849, 0.071282),      # Right mouth corner
-                                (1.3755, 0.17589, -0.21963),        # Chin
-                                (1.3547, 0.14028, 0.36493),     # Left eye left corner
-                                (1.49293, 0.15089, 0.17647),      # Right eye right corne
-                                (1.2479, -0.39149, 0.35044),    # Left Mouth corner
+                                (-0.597752, 0.133348, 1.4020),             # Nose tip
+                                (4.9928, 1.7213, -1.0266),        # Chin
+                                (1.3947, 1.1233, -0.47985),     # Left eye left corner
+                                (1.492, 0.58211, -0.42912),      # Right eye right corne
+                                (1.2935, 0.16672, 0.068351),    # Left Mouth corner
+                                (1.3064, 0.37849, 0.071282),      # Right mouth corner
+                                (1.3755, -0.17589, -0.21963),        # Chin
+                                (1.3547, -0.14028, 0.36493),     # Left eye left corner
+                                (1.49293, -0.15089, 0.17647),      # Right eye right corne
+                                (1.2479, 0.39149, 0.35044),    # Left Mouth corner
                             ])
     
     
@@ -102,7 +109,7 @@ def worker():
     # dist_coeffs = np.zeros((4,1)) # Assuming no lens distortion
     dist_coeffs = np.array([ -0.196606, 0.064156, 0.002826, -0.000069]) # Assuming no lens distortion
 
-    (success, rotation_vector, translation_vector) = cv2.solvePnP(model_points, image_points, camera_matrix, dist_coeffs, flags=cv2.CV_ITERATIVE)
+    (success, rotation_vector, translation_vector) = cv2.solvePnP(model_points, image_points, camera_matrix, dist_coeffs, flags=cv2.EPNP)
     
     print "Rotation Vector:\n {0}".format(rotation_vector)
     print "Translation Vector:\n {0}".format(translation_vector)
@@ -112,16 +119,27 @@ def worker():
     # We use this to draw a line sticking out of the nose
     
     
-    (nose_end_point2D, jacobian) = cv2.projectPoints(np.array([(0.0, 0.0, 1000.0)]), rotation_vector, translation_vector, camera_matrix, dist_coeffs)
+    (projected_lidar, jacobian) = cv2.projectPoints(model_points, rotation_vector, translation_vector, camera_matrix, dist_coeffs)
     
     for p in image_points:
         cv2.circle(im, (int(p[0]), int(p[1])), 3, (0,0,255), -1)
+
+    # print((image_points.shape()))    
+    # print((projected_lidar.shape()))    
+
+    print((image_points))    
+    print((projected_lidar))    
+
+    for q in projected_lidar:
+        cv2.circle(im, (int(q[0][0]), int(q[0][1])), 3, (0,255,255), -1)
+
+        # (temp, temp2) = cv2.projectPoints(q, rotation_vector, translation_vector, camera_matrix, dist_coeffs)
+        # cv2.circle(im, (int(temp[0]), int(temp[1])), 3, (0,255,255), -1)
     
+    # p1 = ( int(image_points[0][0]), int(image_points[0][1]))
+    # p2 = ( int(nose_end_point2D[0][0][0]), int(nose_end_point2D[0][0][1]))
     
-    p1 = ( int(image_points[0][0]), int(image_points[0][1]))
-    p2 = ( int(nose_end_point2D[0][0][0]), int(nose_end_point2D[0][0][1]))
-    
-    cv2.line(im, p1, p2, (255,0,0), 2)
+    # cv2.line(im, p1, p2, (255,0,0), 2)
     
     # Display image
     cv2.imshow("Output", im)

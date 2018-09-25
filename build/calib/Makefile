@@ -605,6 +605,33 @@ src/pcl_stuff.cpp.s:
 	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node2.dir/build.make calib/CMakeFiles/calib_node2.dir/src/pcl_stuff.cpp.s
 .PHONY : src/pcl_stuff.cpp.s
 
+src/project_pcl_to_image.o: src/project_pcl_to_image.cpp.o
+
+.PHONY : src/project_pcl_to_image.o
+
+# target to build an object file
+src/project_pcl_to_image.cpp.o:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o
+.PHONY : src/project_pcl_to_image.cpp.o
+
+src/project_pcl_to_image.i: src/project_pcl_to_image.cpp.i
+
+.PHONY : src/project_pcl_to_image.i
+
+# target to preprocess a source file
+src/project_pcl_to_image.cpp.i:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.i
+.PHONY : src/project_pcl_to_image.cpp.i
+
+src/project_pcl_to_image.s: src/project_pcl_to_image.cpp.s
+
+.PHONY : src/project_pcl_to_image.s
+
+# target to generate assembly for a file
+src/project_pcl_to_image.cpp.s:
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build && $(MAKE) -f calib/CMakeFiles/calib_node4.dir/build.make calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.s
+.PHONY : src/project_pcl_to_image.cpp.s
+
 src/read_param.o: src/read_param.cpp.o
 
 .PHONY : src/read_param.o
@@ -679,6 +706,9 @@ help:
 	@echo "... src/pcl_stuff.o"
 	@echo "... src/pcl_stuff.i"
 	@echo "... src/pcl_stuff.s"
+	@echo "... src/project_pcl_to_image.o"
+	@echo "... src/project_pcl_to_image.i"
+	@echo "... src/project_pcl_to_image.s"
 	@echo "... src/read_param.o"
 	@echo "... src/read_param.i"
 	@echo "... src/read_param.s"

@@ -70,14 +70,29 @@ calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.s"
 	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/calib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/lidar_to_image.cpp -o CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.s
 
+calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o: calib/CMakeFiles/calib_node4.dir/flags.make
+calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o: /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/project_pcl_to_image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o"
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/calib && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o -c /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/project_pcl_to_image.cpp
+
+calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.i"
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/calib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/project_pcl_to_image.cpp > CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.i
+
+calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.s"
+	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/calib && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/src/calib/src/project_pcl_to_image.cpp -o CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.s
+
 # Object files for target calib_node4
 calib_node4_OBJECTS = \
-"CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o"
+"CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o" \
+"CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o"
 
 # External object files for target calib_node4
 calib_node4_EXTERNAL_OBJECTS =
 
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: calib/CMakeFiles/calib_node4.dir/src/lidar_to_image.cpp.o
+/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: calib/CMakeFiles/calib_node4.dir/src/project_pcl_to_image.cpp.o
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: calib/CMakeFiles/calib_node4.dir/build.make
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: /opt/ros/indigo/lib/libcv_bridge.so
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: /opt/ros/indigo/lib/libimage_transport.so
@@ -126,7 +141,7 @@ calib_node4_EXTERNAL_OBJECTS =
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
 /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4: calib/CMakeFiles/calib_node4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/devel/lib/calib/calib_node4"
 	cd /home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/build/calib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/calib_node4.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

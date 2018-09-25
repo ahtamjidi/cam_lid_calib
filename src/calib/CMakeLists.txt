@@ -151,7 +151,7 @@ include_directories(
 add_executable(${PROJECT_NAME}_node1 src/cam_draw.cpp src/read_param.cpp)
 add_executable(${PROJECT_NAME}_node2 src/pcl_stuff.cpp )
 add_executable(${PROJECT_NAME}_node3 src/lidar_camera_calib.cpp )
-add_executable(${PROJECT_NAME}_node4 src/lidar_to_image.cpp )
+add_executable(${PROJECT_NAME}_node4 src/lidar_to_image.cpp src/project_pcl_to_image.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

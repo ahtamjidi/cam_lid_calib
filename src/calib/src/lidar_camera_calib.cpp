@@ -1,5 +1,7 @@
+// NOTE: this code is inspired by example in
+// https://www.learnopencv.com/head-pose-estimation-using-opencv-and-dlib/
 #include <opencv2/opencv.hpp>
- 
+
 using namespace std;
 using namespace cv;
  
@@ -7,20 +9,26 @@ int main(int argc, char **argv)
 {
 
     // Read input image
-    cv::Mat im = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/camcal/left-0015.png");
+    cv::Mat im = cv::imread("/home/amirhossein/Desktop/Mywork/Research_TAMU/autonomous_cars/lidar_camera_calibration/my_sol/data/laser_camera_ass/frame0034.jpg");
      
     // 2D image points. If you change the image, you need to change vector
     std::vector<cv::Point2d> image_points;
-    image_points.push_back( cv::Point2d(597, 323) );    // Nose tip
-    image_points.push_back( cv::Point2d(809, 345) );    // Chin
-    image_points.push_back( cv::Point2d(788, 472) );     // Left eye left corner
-    image_points.push_back( cv::Point2d(577, 454) );    // Right eye right corner
-    image_points.push_back( cv::Point2d(272, 284) );    // Left Mouth corner
-    image_points.push_back( cv::Point2d(515, 292) );    // Right mouth corner
-    image_points.push_back( cv::Point2d(263, 432) );    // Right mouth corner
-    image_points.push_back( cv::Point2d(290, 59) );    // Right mouth corner
-    image_points.push_back( cv::Point2d(278, 194) );    // Right mouth corner
-    image_points.push_back( cv::Point2d(513, 50) );    // Right mouth corner
+
+    // frame0034.jpg
+    image_points.push_back( cv::Point2d(597, 323) );    
+    image_points.push_back( cv::Point2d(809, 345) );    
+    image_points.push_back( cv::Point2d(788, 472) );    
+    image_points.push_back( cv::Point2d(577, 454) ); 
+
+    // frame0000.jpg
+    image_points.push_back( cv::Point2d(272, 284) );    
+    image_points.push_back( cv::Point2d(515, 292) );    
+    image_points.push_back( cv::Point2d(263, 432) );  
+
+    // frame0002.jpg
+    image_points.push_back( cv::Point2d(290, 59) );    
+    image_points.push_back( cv::Point2d(278, 194) );   
+    image_points.push_back( cv::Point2d(513, 50) );    
 
     // 3D model points.
     std::vector<cv::Point3d> model_points;
@@ -41,22 +49,6 @@ int main(int argc, char **argv)
     model_points.push_back(cv::Point3d(1.49293, 0.15089, 0.17647));  // uv = [278, 194]
     model_points.push_back(cv::Point3d(1.2479, -0.39149, 0.35044));  // uv = [513, 50]    
      
-    // // 3D model points.
-    // std::vector<cv::Point3d> model_points;
-    // model_points.push_back(cv::Point3d(0.0f, 0.0f, 0.0f));               // Nose tip
-    // model_points.push_back(cv::Point3d(0.0f, -330.0f, -65.0f));          // Chin
-    // model_points.push_back(cv::Point3d(-225.0f, 170.0f, -135.0f));       // Left eye left corner
-    // model_points.push_back(cv::Point3d(225.0f, 170.0f, -135.0f));        // Right eye right corner
-    // model_points.push_back(cv::Point3d(-150.0f, -150.0f, -125.0f));      // Left Mouth corner
-    // model_points.push_back(cv::Point3d(150.0f, -150.0f, -125.0f));       // Right mouth corner
-    // model_points.push_back(cv::Point3d(0.0f, 0.0f, 0.0f));               // Nose tip
-    // model_points.push_back(cv::Point3d(0.0f, -330.0f, -65.0f));          // Chin
-    // model_points.push_back(cv::Point3d(-225.0f, 170.0f, -135.0f));       // Left eye left corner
-    // model_points.push_back(cv::Point3d(225.0f, 170.0f, -135.0f));        // Right eye right corner
-    // model_points.push_back(cv::Point3d(-150.0f, -150.0f, -125.0f));      // Left Mouth corner
-    // model_points.push_back(cv::Point3d(150.0f, -150.0f, -125.0f));       // Right mouth corner
-
-
     // Camera internals
     double focal_length = im.cols; // Approximate focal length.
     Point2d center = cv::Point2d(im.cols/2,im.rows/2);
@@ -74,7 +66,6 @@ int main(int argc, char **argv)
     // cols: 3
     // data: [483.761692, 0.000000, 456.184555, 0.000000, 483.550078, 365.883083, 0.000000, 0.000000, 1.000000]    
     cv::Mat camera_matrix = (cv::Mat_<double>(3,3) << 483.761692, 0, 456.184555, 0 , 483.550078, 365.883083, 0, 0, 1);
-    // cv::Mat dist_coeffs = cv::Mat::zeros(5,1,cv::DataType<double>::type); // Assuming no lens distortion
      
     cout << "Camera Matrix " << endl << camera_matrix << endl ;
     // Output rotation and translation
@@ -84,24 +75,18 @@ int main(int argc, char **argv)
     // Solve for pose
     cv::solvePnP(model_points, image_points, camera_matrix, dist_coeffs, rotation_vector, translation_vector);
  
+    vector<Point2d> projected_lidar_point2D;
      
-    // Project a 3D point (0, 0, 1000.0) onto the image plane.
-    // We use this to draw a line sticking out of the nose
-     
-    vector<Point3d> nose_end_point3D;
-    vector<Point2d> nose_end_point2D;
-    nose_end_point3D.push_back(Point3d(1.49293f, 0.15089f, 0.17647f));
-     
-    projectPoints(nose_end_point3D, rotation_vector, translation_vector, camera_matrix, dist_coeffs, nose_end_point2D);
+    projectPoints(model_points, rotation_vector, translation_vector, camera_matrix, dist_coeffs, projected_lidar_point2D);
      
      
-    for(int i=0; i < image_points.size(); i++)
+    for(int i=0; i < 4; i++)
     {
         circle(im, image_points[i], 3, Scalar(0,0,255), -1);
+        circle(im, projected_lidar_point2D[i], 3, Scalar(0,255,255), -1);
     }
-     
-    cv::line(im,image_points[0], nose_end_point2D[0], cv::Scalar(255,0,0), 2);
-     
+
+
     cout << "Rotation Vector " << endl << rotation_vector << endl;
     cout << "Translation Vector" << endl << translation_vector << endl;
      

@@ -52,7 +52,7 @@ I used `rect2.launch` to replay and rectify the images. The resulting video is s
 
 # Task 2
 
-To accomplish this task I first manually found some associated pairs of (2D, 3D) points and then solved a pnp problem. The code can be found in `lidar_camera_calib.cpp`
+To accomplish this task I first manually found some associated pairs of (2D, 3D) points and then solved a pnp problem. The code can be found in `lidar_camera_calib.cpp`. The rviz config file is also located in data folder and it is named `lidar_cam.rviz`
 
 ```
 frame0034.jpg
@@ -95,3 +95,11 @@ Rotation Vector
 Translation Vector
 [-0.7380530632718042; -0.02821639983304844; 0.01461670013504489]
 ```
+
+During the development of lidar to image overlay code I started visualizing the reprojection error of camera lidar calibration. I tried to fix these errors. One of the great mistakes that I did in the beginning was neglecting the rotation between camera and lidar coordinates. I think a more accurate way of doing the calibration is to extract planes from chessboard both using camera and lidar. I wrote some code but it is not tested and not complete. I decided to first try the manual method.
+
+These are my thoughts and progress on lidar to image overlay. I have to filter the point cloud to only project  Node `calib__lidonimage` can use the project function defined in `project_pcl_to_image.cpp` to do a simple filtering. `lidar_to_image.cpp` has subscribers to camera image, lidar and cam_info. It also has callback functions for each of these subscribers. A proper method to handle the lidar overlay seems to be
+1- receive cam_info, image and lidar
+2- filter the point cloud to only keep the relevant part of the point cloud (field of view of the camera)
+3- transform and project point cloud onto image plane.
+

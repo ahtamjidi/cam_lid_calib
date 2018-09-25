@@ -103,3 +103,5 @@ These are my thoughts and progress on lidar to image overlay. I have to filter t
 2- filter the point cloud to only keep the relevant part of the point cloud (field of view of the camera)
 3- transform and project point cloud onto image plane.
 
+For the last part I experimented with `image_transform` package which seemed to be the recommended way of doing it. However I had compile problems related to boost which I could not solve. I abandoned image_transform to work on something that I can test.
+
